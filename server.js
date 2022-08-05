@@ -1,9 +1,17 @@
 const express = require("express");
 const app = express();
-
+//import script from "./script.js";
 app.get('/', (req, res) => {
     res.send(
-        '<h1>All products</h1> '
+        //'<h1>All products</h1> '
+        // + '<a href="/products/new">New product</a>'
+        // + '<a href="/products/deleteAll">Delete all</a>'
+        // + '<a href="/products/delete/:id">Delete</a>'
+        // + '<a href="/products/edit/:id">Edit</a>'
+        // + '<a href="/products/getById/:id">Get by id</a>'
+        // + '<a href="/products/getAll">Get all</a>'
+        // + '<a href="/products/update/:id">Update</a>'
+        '<a href="/products/updateById/:id">UpdateById</a>'
     );
 }
 );
