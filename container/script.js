@@ -9,7 +9,7 @@
 
 const { promises: fs } = require('fs')
 class Contenedor {
-    static newId = 0;
+    // static newId = 0;
     constructor(ruta) {
         this.ruta = ruta;
     }
@@ -48,10 +48,10 @@ class Contenedor {
     }
     async getAll() {
         try {
-            const objs = await fs.readFile(this.ruta,);
+            const objs = await fs.readFile(this.ruta, 'utf8');
             return JSON.parse(objs);
         } catch (error) {
-            return [];
+            return `Unable to get data`
         }
     }
     async updateById(obj) {
