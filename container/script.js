@@ -9,7 +9,6 @@
 
 const { promises: fs } = require('fs')
 class Contenedor {
-    // static newId = 0;
     constructor(ruta) {
         this.ruta = ruta;
     }
@@ -40,16 +39,17 @@ class Contenedor {
     async getRandom() {
         try {
             let objs = await this.getAll();
-            let index = Math.floor(Math.random() * objs.length);
-            return objs[index];
+            let product = JSON.parse(objs);
+            let index = Math.floor(Math.random() * product.length);
+            return product[index];
         } catch (error) {
-            throw new Error(`error cannot get data ${error}`)
+            return `Unable to get data`
         }
     }
     async getAll() {
         try {
-            const objs = await fs.readFile(this.ruta, 'utf8');
-            return JSON.parse(objs);
+            let objs = await fs.readFile(this.ruta, 'utf8');
+            return objs;
         } catch (error) {
             return `Unable to get data`
         }
