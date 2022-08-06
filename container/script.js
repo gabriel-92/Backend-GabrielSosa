@@ -37,6 +37,15 @@ class Contenedor {
         }
         return obj
     }
+    async getRandom() {
+        try {
+            let objs = await this.getAll();
+            let index = Math.floor(Math.random() * objs.length);
+            return objs[index];
+        } catch (error) {
+            throw new Error(`error cannot get data ${error}`)
+        }
+    }
     async getAll() {
         try {
             const objs = await fs.readFile(this.ruta,);
@@ -73,21 +82,32 @@ class Contenedor {
         }
     }
 }
-let product = new Contenedor('./product.txt');
-/*product.save({
-    name: "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops", "price": 109.95, "description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
-    "category": "men's clothing",
-    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-    "rating": {
-        "rate": 3.9,
-        "count": 120
-    }
-})*/
-//product.deleteById(1659632343365)
-//product.updateById({ id: 1659632343365, name: " pc lg", category:"pc",price:100, description:"pc", image:"https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg", rating: { rate: 3.9, count: 120 } })
-product.getById(16)
-    // product.deleteAll()
+module.exports = Contenedor;
 
-    .then(data => console.log(data))
-    .catch((err => console.log(err)))
-    .finally(() => console.log('finish'))
+
+
+
+
+
+
+
+
+// }
+// let product = new Contenedor('./product.txt');
+// /*product.save({
+//     name: "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops", "price": 109.95, "description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
+//     "category": "men's clothing",
+//     "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+//     "rating": {
+//         "rate": 3.9,
+//         "count": 120
+//     }
+// })*/
+// //product.deleteById(1659632343365)
+// //product.updateById({ id: 1659632343365, name: " pc lg", category:"pc",price:100, description:"pc", image:"https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg", rating: { rate: 3.9, count: 120 } })
+// product.getById(16)
+//     // product.deleteAll()
+
+//     .then(data => console.log(data))
+//     .catch((err => console.log(err)))
+//     .finally(() => console.log('finish'))
